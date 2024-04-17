@@ -30,8 +30,8 @@ bool ImportFile(const string& fileName,
         cerr << "Invalid format" << endl;
         return false;
     }
-    else{
-        sub_str = line.substr(pos + 1); // Estraction of S from the substring after ;
+    else{ // Estraction of S from the substring after ;
+        sub_str = line.substr(pos + 1);
         S = stoi(sub_str);
     }
 
@@ -42,8 +42,8 @@ bool ImportFile(const string& fileName,
         cerr << "Invalid format" << endl;
         return false;
     }
-    else{
-        sub_str = line.substr(pos + 1); // Estraction of S from the substring after ;
+    else{ // Estraction of n from the substring after ;
+        sub_str = line.substr(pos + 1);
         n = stoi(sub_str);
     }
 
@@ -57,9 +57,9 @@ bool ImportFile(const string& fileName,
         getline(fsr, line);
         stringstream ss(line);
         string part;
-        int count = 0; // counter for part of the line read
+        int count = 0; // counter for each part of the line separated by ;
 
-        // Read every part of the line separeted by ';'
+        // Read every part of the line separated by ';'
         while (getline(ss, part, delimiter)) {
             // Convertion in double
             double number;
