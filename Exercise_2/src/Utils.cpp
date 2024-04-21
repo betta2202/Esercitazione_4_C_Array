@@ -80,8 +80,6 @@ bool ImportFile(const string& fileName,
     return true;
 }
 
-
-
 double dotProduct(const double * const& vec1,
                   const double * const& vec2,
                   const size_t& n)
@@ -92,6 +90,38 @@ double dotProduct(const double * const& vec1,
         ris +=  vec1[i] * (vec2[i]);
     }
     return ris;
+}
+
+bool PrintResult(const size_t& n,
+                 const unsigned int& S,
+                 const double * const& w,
+                 const double * const& r,
+                 const double & rate,
+                 const double & V) // print read data and result on the screen
+{
+    cout << "S = " << fixed << setprecision(2) << double(S) << ", ";
+    // reset default print of double
+    cout << defaultfloat;
+
+    cout << "n = " << n << endl;
+
+    cout << "w = [ ";
+    for (int i = 0; i < n; ++i) {
+        cout << w[i] << " ";
+    }
+    cout << "]" << endl;
+
+    cout << "r = [ ";
+    for (int i = 0; i < n; ++i) {
+        cout << r[i] << " ";
+    }
+    cout << "]" << endl;
+
+    cout << "Rate of return of the portfolio: " << fixed << setprecision(4) << rate << endl;
+
+    cout << "V: " << fixed << setprecision(2) << V << endl;
+
+    return true;
 }
 
 bool ExportResult(const string& FileName,

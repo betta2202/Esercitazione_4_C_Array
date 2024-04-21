@@ -27,6 +27,13 @@ int main()
     double rate = dotProduct(w, r, n);
     double V = S*(1+rate);
 
+    if(!PrintResult(n, S, w, r, rate, V))
+    {
+        cerr<< "Something goes wrong"<< endl;
+        return -1;
+    }
+
+
     fileName = "result.txt";
     if(!ExportResult(fileName, n, S, w, r, rate, V))
     {

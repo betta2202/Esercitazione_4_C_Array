@@ -14,6 +14,13 @@ bool ImportFile(const string& fileName,
                 unsigned int& S,
                 double *& w, double *& r);
 
+bool PrintResult(const size_t& n,
+                 const unsigned int& S,
+                 const double * const& w,
+                 const double * const& r,
+                 const double & rate,
+                 const double & V);
+
 bool ExportResult(const string& FileName,
                   const size_t& n,
                   const unsigned int& S,
