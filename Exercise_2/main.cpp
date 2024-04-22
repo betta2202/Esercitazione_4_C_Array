@@ -33,7 +33,6 @@ int main()
         return -1;
     }
 
-
     fileName = "result.txt";
     if(!ExportResult(fileName, n, S, w, r, rate, V))
     {
@@ -43,10 +42,8 @@ int main()
     else
         cout<< "Export successful"<< endl;
 
-
     delete [] w;
     delete [] r;
-
 
     return 0;
 }

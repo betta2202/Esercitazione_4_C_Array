@@ -19,14 +19,14 @@ bool ImportFile(const string& fileName,
     }
 
     char delimiter = ';';
-
     string line;
     string sub_str;
 
     // line 0
     getline(fsr, line);
+
     size_t pos = line.find(delimiter);
-    if(pos > 1){
+    if(pos > 1){ // check the format of the file
         cerr << "Invalid format" << endl;
         return false;
     }
@@ -37,8 +37,9 @@ bool ImportFile(const string& fileName,
 
     // line 1
     getline(fsr, line);
+
     pos = line.find(delimiter);
-    if(pos > 1){
+    if(pos > 1){ // check the format of the file
         cerr << "Invalid format" << endl;
         return false;
     }
@@ -53,32 +54,21 @@ bool ImportFile(const string& fileName,
     //line 3
     w = new double[n];
     r = new double[n];
-    for(int i = 0; i < n; ++i) {
+    for(int i = 0; i < n; ++i)
+    {
         getline(fsr, line);
-        stringstream ss(line);
-        string part;
-        int count = 0; // counter for each part of the line separated by ;
+        stringstream convert(line);
+        char delimiter;
 
-        // Read every part of the line separated by ';'
-        while (getline(ss, part, delimiter)) {
-            // Convertion in double
-            double number;
-            stringstream(part) >> number;
-            // Save the number in the correct vector
-            if (count == 0) {
-                w[i] = number; // first number -> w
-            }
-            else if (count == 1) {
-                r[i] = number; // second number -> r
-            }
-            count++;
-        }
+        convert >> delimiter >> w[i] >> delimiter >> r[i];
     }
 
     fsr.close();
 
     return true;
 }
+
+// **************************************************************************************************************************************************
 
 double dotProduct(const double * const& vec1,
                   const double * const& vec2,
@@ -91,6 +81,8 @@ double dotProduct(const double * const& vec1,
     }
     return ris;
 }
+
+// **************************************************************************************************************************************************
 
 bool PrintResult(const size_t& n,
                  const unsigned int& S,
@@ -123,6 +115,8 @@ bool PrintResult(const size_t& n,
 
     return true;
 }
+
+// **************************************************************************************************************************************************
 
 bool ExportResult(const string& FileName,
                   const size_t& n,
